@@ -1,0 +1,116 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+
+    background-image: url("/images/blatent_coppyright_infringement.png");
+    background-repeat: no-repeat;
+    background-size: inherit;
+    filter: opacity(95%);
+}
+
+.teamDiv {
+    margin: 0px;
+
+    padding-left: 10px;
+    padding-right: 10px;
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
+
+    width: 50%;
+
+    height: 16.667vh;
+}
+
+.buttonsDiv {
+    position: absolute;
+    left: 75%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.buttonsDiv > button {
+    width: 200px;
+    padding-top:25px;
+    padding-bottom: 25px; 
+    
+    margin: 20px;
+
+    border: 1px white solid;
+    background-color: black;
+    color: white;
+
+    border-radius: 10px;
+
+    transition-duration: 0.25s;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+}
+
+.buttonsDiv > button:hover {
+    background-color: rgb(200,200,200);
+    color: rgb(50, 50, 50);
+    cursor: pointer;
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.houseDiv {
+    /* makes the houses appear
+    on the same line as their points */
+    float: left;
+    position: relative;
+    margin-top: 8.333vh;
+    width: 200px;
+    margin-left: 30%;
+    transform: translate(0%,-50%);
+    font-size: 24px;
+}
+
+.pointsDiv > input {
+    width: 50px;
+    height: 45px;
+    transform: translate(0%,-50%);
+    margin-top: 8.333vh;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    border: 1px solid white;
+}
+
+.balmoral {
+    background-color: rgb(150,0,255);
+    color: white;
+    font-weight: 700;
+}
+
+.sutherland {
+    background-color: rgb(0,0,255);
+    color: white;
+    font-weight: 700;
+}
+
+.gleneagles {
+    background-color: rgb(240,240,240);
+    color: black;
+    font-weight: 700;
+}
+
+.caladonia {
+    background-color: rgb(0,200,0);
+    color: white;
+    font-weight: 700;
+}
+
+.walace {
+    background-color: rgb(255,255,0);
+    color: black;
+    font-weight: 700;
+}
+
+.ramsy {
+    background-color: rgb(255,0,0);
+    color: white;
+    font-weight: 700;
+}

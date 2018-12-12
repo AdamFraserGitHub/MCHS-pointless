@@ -1,0 +1,51 @@
+<html>
+    <body>
+        <title>control pannel</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="styles/controlPanel.css">
+        <script src="/socket.io/socket.io.js"></script>
+    </body>
+
+    <body>
+        <div class="balmoral teamDiv">
+            <div class="houseDiv">Balmoral</div>
+            <div class="pointsDiv"><input class="balmoral" type="text" name="" id="balmoralPoints" value="0"></div>
+        </div>
+
+        <div class="sutherland teamDiv">
+            <div class="houseDiv">Sutherland</div>
+            <div class="pointsDiv"><input class="sutherland" type="text" name="" id="sutherlandPoints" value="0"></div>
+        </div>
+
+        <div class="gleneagles teamDiv">
+            <div class="houseDiv">Gleneagles</div>
+            <div class="pointsDiv"><input class="gleneagles" type="text" name="" id="gleneaglesPoints" value="0"></div>
+        </div>
+
+        <div class="caladonia teamDiv">
+            <div class="houseDiv">Caladonia</div>
+            <div class="pointsDiv"><input class="caladonia" type="text" name="" id="caladoniaPoints" value="0"></div>
+        </div>
+                    
+        <div class="walace teamDiv">
+            <div class="houseDiv">Walace</div>
+            <div class="pointsDiv"><input class="walace" type="text" name="" id="walacePoints" value="0"></div>
+        </div>
+
+        <div class="ramsy teamDiv">
+            <div class="houseDiv">Ramsy</div>
+            <div class="pointsDiv"><input class="ramsy" type="text" name="" id="ramsyPoints" value="0"></div>
+        </div>
+
+        <div class="buttonsDiv">
+            <button id="submitChangesBtn">submit changes</button>
+            <br>
+            <button id="removeLowestScoreBtn"">remove lowest scoring team</button>
+            <br>
+            <button id="clearScores"">clear scoreboard</button>
+        </div>
+    </body>
+
+    <script src="scripts/controlPannelScript.js"></script>
+</html>

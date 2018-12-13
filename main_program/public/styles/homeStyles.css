@@ -1,0 +1,52 @@
+.centralDiv {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 300px;
+    width: 30%;
+    text-align: center;
+    background-color: #ff0000;
+    animation: bgColor 60s infinite linear;
+    padding: 50px;
+    border-radius: 20px;
+}
+
+body, html {
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+p {
+    font-size: 22px;
+    line-height: 30px;
+    color: white;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+@keyframes bgColor {
+    16.66% {
+      background-color: rgb(255,150,0);
+    }
+    33.33% {
+      background-color: #00FF00;
+    }
+    50% {
+      background-color: #00FFFF;
+    }
+    66.66% {
+      background-color: #0000FF;
+    }
+    83.32% {
+      background-color: #FF00FF;
+    }
+    100% {
+      background-color: #FF0000;
+    }
+}

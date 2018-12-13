@@ -34,3 +34,11 @@ socket.on('clearScoreboard', function(data) {
         houseElems[i].innerHTML = "0"
     };
 });
+
+socket.on('hideRemoved', function(data) {
+    for(var i = 0; i < houses.length; i++) {
+        if(!(houses[i] in data.houses)) {
+            document.getElementById(houses[i].toLowerCase() + 'Div').hidden = true;
+        }
+    };
+});

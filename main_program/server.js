@@ -25,7 +25,8 @@ var scoreBoards = 0;
 
 controlPannelSpace.on('connection', function(socket) {
     console.log("control pannel connected (づ｡◕‿‿◕｡)づ");
-    //TODO: send existing score data
+    scoreBoardSpace.emit('updateScores', {newScores: scores});
+    scoreBoardSpace.emit('hideRemoved', {houseNames: houses});
 
     socket.on('disconnect', function() {
         console.log("controll pannel disconnected ༼ つ ಥ_ಥ ༽つ");

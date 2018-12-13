@@ -18,4 +18,9 @@ router.get('/scoreBoard', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'pages', 'scoreBoard.html'));
 });
 
+//temporary
+router.get('/n', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'newScoreboard.html'));
+});
+
 module.exports = router;

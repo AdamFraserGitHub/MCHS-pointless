@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>scoreboard</title>
+        
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link rel="stylesheet" href="styles/newscoreBoard.css">
+        <script src="/socket.io/socket.io.js"></script>
+    </head>
+
+    <body>
+        <div class="teamDiv" id="balmoralDiv">
+            <div class="houseDiv balmoral">Balmoral</div>
+            <div class="pointsDiv balmoral">0</div>
+        </div>
+
+        <div class="teamDiv" id="balmoralDiv">
+            <div class="houseDiv sutherland">Sutherland</div>
+            <div class="pointsDiv sutherland">0</div>
+        </div>
+        
+        <div class="teamDiv" id="gleneaglesDiv">
+            <div class="houseDiv gleneagles">Gleneagles</div>
+            <div class="pointsDiv gleneagles">0</div>
+        </div>
+
+        <div class="teamDiv" id="caladoniaDiv">
+            <div class="houseDiv caladonia">Caladonia</div>
+            <div class="pointsDiv caladonia">0</div>
+        </div>
+                    
+        <div class="teamDiv" id="walaceDiv">
+            <div class="houseDiv walace">Walace</div>
+            <div class="pointsDiv walace">0</div>
+        </div>
+
+        <div class="teamDiv" id="ramsyDiv">
+            <div class="houseDiv ramsy">Ramsy</div>
+            <div class="pointsDiv ramsy">0</div>
+        </div>
+    </body>
+
+    <script>
+        var teamDivs = [];
+        for(var i = 0; i < 6; i++) {
+            if(!document.getElementsByClassName('teamDiv')[i].hidden) {
+                teamDivs.push(document.getElementsByClassName('teamDiv')[i]);
+                teamDivs[i].style.marginTop = (i * (100/6)).toString() + "vh";
+            }
+        }
+    </script>
+</html>

@@ -21,3 +21,4 @@ snapchat
 xenong8e54
 
 to be able to edit this project you'll need at least a basic understanding of javascript, HTML, CSS, node.js, express.js, socket.io and a stress ball
+https://github.com/AdamFraserGitHub/MCHS-pointless

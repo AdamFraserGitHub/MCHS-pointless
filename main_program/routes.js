@@ -15,12 +15,12 @@ router.get('/controlPannel', function(req, res) {
 });
 
 router.get('/scoreBoard', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'pages', 'scoreBoard.html'));
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'newScoreboard.html'));
 });
 
 //temporary
 router.get('/n', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public', 'pages', 'newScoreboard.html'));
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'scoreBoard.html'));
 });
 
 module.exports = router;

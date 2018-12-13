@@ -49,6 +49,8 @@ controlPannelSpace.on('connection', function(socket) {
 
                 scores[i] += parseInt(data.scores[i]);
             }
+
+            console.log(scores);
             
             scoreBoardSpace.emit('updateScores', {newScores: scores});
         }
@@ -82,7 +84,7 @@ controlPannelSpace.on('connection', function(socket) {
         }
 
         console.log(houses);
-        console.log(scores)
+        console.log(scores);
         if(smallestHouses.length == 1) {
             console.log("\n" + smallestHouses[0] + " you are the weakest link.. wait wrong show");
         } else {

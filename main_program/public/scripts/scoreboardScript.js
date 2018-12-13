@@ -17,6 +17,7 @@ socket.on('resetScoreboard', function(data) {
 });
 
 socket.on('updateScores', function(data) {
+    console.log(data);
     for(var i = 0; i < houseElems.length; i++) {
         houseElems[i].innerHTML = data.newScores[i];
     }

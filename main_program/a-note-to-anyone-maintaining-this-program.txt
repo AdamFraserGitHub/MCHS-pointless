@@ -1,0 +1,23 @@
+ok this isn't my best work by any means but it gets the job done and it had to be done within a couple days. this project is an uncommented garbled mess with deadends, traps and boss fights. if you want me to go over the code or help 
+you to add functionality / iron out bugs please feel free to contact me. i'll probably not have any of my old addresses or numbers so here's some information you can probably use to find me (unless i go full paranoid hermit)
+
+Adam Fraser
+Abertay University
+S6 leaver 2019
+teachers in last year
+	Mr Guidi (physics)
+	Miss Dickson (maths)
+	Mr Hendry (williamwood CS)
+	Mrs Crilley (pastoral support)
+
+github: AdamFraserGitHub
+
+a bunch of e-mails i won't have
+adamfraserprograming@gmail.com
+gw09fraseradam2@gmail.com
+adamfraser.ucas@gmail.com
+
+snapchat
+xenong8e54
+
+to be able to edit this project you'll need at least a basic understanding of javascript, HTML, CSS, node.js, express.js, socket.io and a stress ball

@@ -1,0 +1,19 @@
+this program really wasn't made with being easy to opperate in mind.
+to install it you'll need to install the "node.js" runtime enviroment
+for the server. from there you'll need to run a command something like
+"node server.js" (no quotation marks) to run the server in the
+"main_program" folder. note you will need to give the full file directory
+of the server (something like C:\\users\documents\pointless\main_program\server.js rather than just sever.js)
+from there you can probably follow the instructions that will pop up in
+the console window. if you need a hand setting up the program feel free to 
+try contacting me using the information in the "a-note-to-anyone-maintaining-this-program.txt"
+file, or you could try asking one of the computer science teachers
+
+https://nodejs.org/en/download/
+
+once you have fully installed node.js you will need to go to a command prompt
+(possiblly in administrater / sudo mode) and type the following one after
+the other (no particular order)
+npm install ip
+npm install express
+npm install socket.io

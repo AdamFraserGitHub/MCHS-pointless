@@ -20,6 +20,7 @@ body {
     margin-left: 50%;
     position: absolute;
     transform: translate(-40%, 0%);
+    transition-duration: 1s;
 }
 
 .houseDiv {

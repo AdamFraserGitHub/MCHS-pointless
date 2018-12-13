@@ -109,6 +109,7 @@ controlPannelSpace.on('connection', function(socket) {
 
 scoreBoardSpace.on('connection', function(socket) {
     console.log("\nscoreboard connected (づ｡◕‿‿◕｡)づ");
+    scoreBoardSpace.emit('updateScores', {newScores: scores})
     scoreBoards ++;
 
     socket.on('disconnect', function() {

@@ -40,6 +40,13 @@ socket.on('removeHouses', function(data) {
         document.getElementById(data.houses[i].toLowerCase() + 'Div').style.marginTop = "5000px"; //eww
         hidden.push(houses[i]);
     }
+
+    var teamOrder = sortHouses(houses);
+
+    for(var i = 0; i < teamOrder.length; i++) {
+        //find div, set its top margin
+        document.getElementById(teamOrder[i].toLowerCase() + 'Div').style.marginTop = ((i * 16.6667) + (100/24) * hidden.length).toString() + 'vh';
+    }
 });
 
 socket.on('clearScoreboard', function(data) {

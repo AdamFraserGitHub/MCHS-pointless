@@ -25,8 +25,8 @@ var scoreBoards = 0;
 
 controlPannelSpace.on('connection', function(socket) {
     console.log("control pannel connected (づ｡◕‿‿◕｡)づ");
-    scoreBoardSpace.emit('updateScores', {newScores: scores});
-    scoreBoardSpace.emit('hideRemoved', {houseNames: houses});
+    
+    // scoreBoardSpace.emit('hideRemoved', {houseNames: houses});
 
     socket.on('disconnect', function() {
         console.log("controll pannel disconnected ༼ つ ಥ_ಥ ༽つ");
@@ -109,7 +109,7 @@ controlPannelSpace.on('connection', function(socket) {
 
 scoreBoardSpace.on('connection', function(socket) {
     console.log("\nscoreboard connected (づ｡◕‿‿◕｡)づ");
-    scoreBoardSpace.emit('updateScores', {newScores: scores})
+    scoreBoardSpace.emit('updateScores', {newScores: scores});
     scoreBoards ++;
 
     socket.on('disconnect', function() {

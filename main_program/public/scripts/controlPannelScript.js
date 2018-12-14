@@ -10,6 +10,8 @@ const caladoniaPointsElem = document.getElementById('caladoniaPoints');
 const houseElems = [balmoralPointsElem, sutherlandPointsElem, gleneaglesPointsElem, caladoniaPointsElem, walacePointsElem, ramsyPointsElem];
 const houses = ['Balmoral', 'Sutherland', 'Gleneagles', 'Caladonia', 'Walace', 'Ramsy'];
 
+var rune = new Audio('/audio/runescape.oog');
+
 function submitChanges() {
     var data2Send = getPointsData();
 
@@ -20,10 +22,13 @@ function submitChanges() {
 
         socket.emit('updateScores', {scores: data2Send});
     }
+
+    rune.play();
 }
 
 function removeLowestScore() {
     socket.emit('removeHouse', {})
+    rune.play();
 }
 
 function getPointsData() {
@@ -41,10 +46,12 @@ function getPointsData() {
 
 function clearScoreBoard() {
     socket.emit('clearScoreboard', {});
+    rune.play();
 }
 
 socket.on('noScoreboard', function(data) {
     alert("no scoreboard detected 😭")
+    rune.play();
 })
 
 document.getElementById('submitChangesBtn').addEventListener('click', function(clickEvent) { submitChanges(); });

@@ -5,6 +5,7 @@ const path = require('path');
 router.use('/styles', express.static('public/styles'));
 router.use('/scripts', express.static('public/scripts'));
 router.use('/images', express.static('public/images'));
+router.use('/audio', express.static('public/audio'));
 
 router.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'pages', 'home.html'));

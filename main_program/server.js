@@ -14,6 +14,7 @@ var io = require('socket.io')(server);
 const ipModule = require('ip');
 //=====================================================================
 
+var hidden = [];
 
 const controlPannelSpace = io.of('/controlPannelSpace');
 const scoreBoardSpace = io.of('/scoreBoardSpace');
@@ -73,7 +74,10 @@ controlPannelSpace.on('connection', function(socket) {
 
         for(var i = 0; i < smallestHouses.length; i++) {
             for(var j = 0; j < houses.length; j++) {
-                if(houses[j] == smallestHouses[i]) { houses.splice(j, 1); }
+                if(houses[j] == smallestHouses[i]) { 
+                    hidden.push(houses[j]);
+                    houses.splice(j, 1); 
+                }
             }
         }
 
@@ -83,8 +87,6 @@ controlPannelSpace.on('connection', function(socket) {
             }
         }
 
-        console.log(houses);
-        console.log(scores);
         if(smallestHouses.length == 1) {
             console.log("\n" + smallestHouses[0] + " you are the weakest link.. wait wrong show");
         } else {
@@ -103,6 +105,7 @@ controlPannelSpace.on('connection', function(socket) {
     socket.on('clearScoreboard', function(data) {
         houses = ['Balmoral', 'Sutherland', 'Gleneagles', 'Caladonia', 'Walace', 'Ramsy'];
         scores = [0,0,0,0,0,0];
+        hidden = [];
         scoreBoardSpace.emit('clearScoreboard', {});
     });
 });
@@ -110,6 +113,7 @@ controlPannelSpace.on('connection', function(socket) {
 scoreBoardSpace.on('connection', function(socket) {
     console.log("\nscoreboard connected (づ｡◕‿‿◕｡)づ");
     scoreBoardSpace.emit('updateScores', {newScores: scores});
+    scoreBoardSpace.emit('removeHouses', {houses: hidden});
     scoreBoards ++;
 
     socket.on('disconnect', function() {

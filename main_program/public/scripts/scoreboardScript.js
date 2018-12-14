@@ -5,7 +5,7 @@ const walacePointsElem = document.getElementById('walacePoints');
 const gleneaglesPointsElem = document.getElementById('gleneaglesPoints');
 const caladoniaPointsElem = document.getElementById('caladoniaPoints');
 
-var houseElems = [balmoralPointsElem, sutherlandPointsElem, gleneaglesPointsElem, caladoniaPointsElem, walacePointsElem, ramsyPointsElem];
+const houseElems = [balmoralPointsElem, sutherlandPointsElem, gleneaglesPointsElem, caladoniaPointsElem, walacePointsElem, ramsyPointsElem];
 var houses = ['Balmoral', 'Sutherland', 'Gleneagles', 'Caladonia', 'Walace', 'Ramsy'];
 var scores = [0,0,0,0,0,0];
 var hidden = [];

@@ -1,38 +1,68 @@
 <html>
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="/socket.io/socket.io.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <style>
+            body {
+                text-align: center;
+                font-family: 'Roboto', sans-serif;
+            }
 
+            input {
+                height: 50px;
+                width: 50px;
+                border: 2px solid black;
+                text-align: center;
+            }
+
+            button {
+                height: 50px;
+                border: solid 2px black;
+                background-color: transparent;
+                transition-duration: 0.1s;
+            }
+
+            button:hover {
+                height: 60px;
+                border: solid 2px black;
+                background-color: rgb(240,240,240);
+            }
+        </style>
     </head>
     <body>
         balmoral:
-        <input type="number">
+        <input id="balmoralPoints" type="number" placeholder="0">
         <br>
         <br>
         sutherland:
-        <input type="number">
+        <input id="sutherlandPoints" type="number" placeholder="0">
         <br>
         <br>
         wallace:
-        <input type="number">
+        <input id="walacePoints" type="number" placeholder="0">
         <br>
         <br>
         gleneagles:
-        <input type="number">
+        <input id="gleneaglesPoints" type="number" placeholder="0">
         <br>
         <br>
         caladonia:
-        <input type="number">
+        <input id="caladoniaPoints" type="number" placeholder="0">
         <br>
         <br>
         ramsay:
-        <input type="number">
+        <input id="ramsyPoints"type="number" placeholder="0">
         <br>
         <br>
-        <button onclick="sendChanges">submit changes</button>
+        <button id="submitChangesBtn">submit changes</button>
         <br>
         <br>
-        <button onclick="sendChanges">remove lowest score</button>
+        <button id="removeLowestScoreBtn">remove lowest score</button>
         <br>
         <br>
-        <button onclick="sendChanges">clear scorboard</button>
+        <button id="clearScores">clear scorboard</button>
     </body>
+
+    <script src="/scripts/mobileControl.js"></script>
 </html>

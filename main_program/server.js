@@ -130,7 +130,7 @@ scoreBoardSpace.on('connection', function(socket) {
 const routes = require('./routes.js')
 app.use('/', routes);
 
-server.listen(80,'0.0.0.0', function(err) {
+server.listen(3000,'0.0.0.0', function(err) {
     if(err) {
         console.log("you broke the server! GRRR!! (ノಠ益ಠ)ノ彡┻━┻ \n");
     } else {

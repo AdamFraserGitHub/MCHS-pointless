@@ -11,6 +11,10 @@ router.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'pages', 'home.html'));
 });
 
+router.get('/m', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'pages', 'mobleScoreboard.html'))
+})
+
 router.get('/controlPannel', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'pages', 'controlPannel.html'));
 });

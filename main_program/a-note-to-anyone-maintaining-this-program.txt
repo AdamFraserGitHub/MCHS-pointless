@@ -4,11 +4,6 @@ you to add functionality / iron out bugs please feel free to contact me. i'll pr
 Adam Fraser
 Abertay University
 S6 leaver 2019
-teachers in last year
-	Mr Guidi (physics)
-	Miss Dickson (maths)
-	Mr Hendry (williamwood CS)
-	Mrs Crilley (pastoral support)
 
 github: AdamFraserGitHub
 

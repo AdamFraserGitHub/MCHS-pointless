@@ -36,8 +36,8 @@ socket.on('updateScores', function(data) {
 
 socket.on('removeHouses', function(data) {
     for(var i = 0; i < data.houses.length; i++) {
-        document.getElementById(data.houses[i].toLowerCase() + 'Div').hidden = true;
-        document.getElementById(data.houses[i].toLowerCase() + 'Div').style.marginTop = "5000px"; //eww
+        document.getElementById(data.houses[i].toLowerCase() + 'Div').style.display = "none";
+        // document.getElementById(data.houses[i].toLowerCase() + 'Div').style.marginTop = "5000px"; //eww
         hidden.push(houses[i]);
     }
 
@@ -51,7 +51,7 @@ socket.on('removeHouses', function(data) {
 
 socket.on('clearScoreboard', function(data) {
     for(var i = 0; i < houses.length; i++) {
-        document.getElementById(houses[i].toLowerCase() + 'Div').hidden = false;
+        document.getElementById(houses[i].toLowerCase() + 'Div').style.display = "block";
         document.getElementById(houses[i].toLowerCase() + 'Div').style.marginTop = (16.6667 * i).toString() + 'vh';
         houseElems[i].innerHTML = "0"
     };

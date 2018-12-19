@@ -76,14 +76,14 @@ controlPannelSpace.on('connection', function(socket) {
             for(var j = 0; j < houses.length; j++) {
                 if(houses[j] == smallestHouses[i]) { 
                     hidden.push(houses[j]);
-                    houses.splice(j, 1); 
+                    // houses.splice(j, 1); 
                 }
             }
         }
 
         for(var i = 0; i < smallestHouses.length; i++) {
             for(var j = 0; j < scores.length; j++) {
-                if(scores[j] == smallestScore) { scores.splice(j, 1); }
+                // if(scores[j] == smallestScore) { scores.splice(j, 1); }
             }
         }
 

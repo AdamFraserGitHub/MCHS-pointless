@@ -38,7 +38,9 @@ socket.on('updateScores', function(data) {
 
     for(var i = 0; i < teamOrder.length; i++) {
         //find div, set its top margin
-        document.getElementById(teamOrder[i].toLowerCase() + 'Div').style.marginTop = (i * 16.6667).toString() + 'vh';
+        if(!linSearch(hidden, teamOrder[i])){
+            document.getElementById(teamOrder[i].toLowerCase() + 'Div').style.marginTop = (i * 16.6667).toString() + 'vh';
+        }
     }
 });
 
@@ -86,26 +88,21 @@ socket.on('hideRemoved', function(data) {
 function sortHouses(list2Sort) {
     //this funciton will need to sort scores and houses simultaniously
     sortedList = [];
-    list2Sort = list2Sort.slice();
-    var scoresCoppy = scores.slice();
+    for(var i = 0; i < list2Sort.length; i++) {
+        list2Sort[i] = {name: list2Sort[i], score: scores[i]};
+    }
 
     var lenList = list2Sort.length;
     for(var i = 0; i < lenList; i++) {
         //find largest and put in sorted list
-        var largestIndex;
-        for(var j = 0; j < list2Sort.length; j++) {
-            if(!(list2Sort[j] in hidden)) {
-                largestIndex = j;
-                break;
-            }
-        }    
+        var largestIndex = 0;
 
         for(var j = 0; j < list2Sort.length; j++) {
-            if(!(list2Sort[j] in hidden)) {
-                if (scoresCoppy[j] > scoresCoppy[largestIndex]) {
+            // if(!(list2Sort[j] in hidden)) {
+                if (list2Sort[j].largestIndex > list2Sort[largestIndex].score) {
                     largestIndex = j;
                 }
-            }
+            // }
         }
 
         sortedList.push(list2Sort[largestIndex]);
@@ -114,4 +111,14 @@ function sortHouses(list2Sort) {
     }
 
     return sortedList;
+}
+
+function linSearch(array, key) {
+    for(var i = 0; i < array.length; i++) {
+        if(array == key) {
+            return true;
+        }
+    }
+
+    return false;
 }

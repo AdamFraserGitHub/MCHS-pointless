@@ -35,11 +35,14 @@ socket.on('updateScores', function(data) {
 
     //stuff for sorting and moving about teams
     var teamOrder = sortHouses(houses);
+    console.log(teamOrder);
 
+    var count = 0;
     for(var i = 0; i < teamOrder.length; i++) {
         //find div, set its top margin
-        if(!linSearch(hidden, teamOrder[i])){
-            document.getElementById(teamOrder[i].toLowerCase() + 'Div').style.marginTop = (i * 16.6667).toString() + 'vh';
+        if(!linSearch(hidden, teamOrder[i].name)){
+            console.log("ok")
+            document.getElementById(teamOrder[i].name.toLowerCase() + 'Div').style.marginTop = (count * 16.6667).toString() + 'vh';
         }
     }
 });
@@ -74,40 +77,33 @@ socket.on('clearScoreboard', function(data) {
 
     scores = [0,0,0,0,0,0];
     hidden = [];
-});
+}); 
 
-socket.on('hideRemoved', function(data) {
-    for(var i = 0; i < houses.length; i++) {
-        if(!(houses[i] in data.houseNames)) {
-            document.getElementById(houses[i].toLowerCase() + 'Div').hidden = true;
-            hidden.push(houses[i]);
-        }
-    };
-});
 
 function sortHouses(list2Sort) {
     //this funciton will need to sort scores and houses simultaniously
-    sortedList = [];
-    for(var i = 0; i < list2Sort.length; i++) {
-        list2Sort[i] = {name: list2Sort[i], score: scores[i]};
+    var sortedList = [];
+    var lenList = list2Sort.length;
+    var workingList = []
+
+    for(var i = 0; i < lenList; i++) {
+        workingList.push({name: list2Sort[i], score: scores[i]});
     }
 
-    var lenList = list2Sort.length;
     for(var i = 0; i < lenList; i++) {
         //find largest and put in sorted list
         var largestIndex = 0;
 
-        for(var j = 0; j < list2Sort.length; j++) {
+        for(var j = 0; j < workingList.length; j++) {
             // if(!(list2Sort[j] in hidden)) {
-                if (list2Sort[j].largestIndex > list2Sort[largestIndex].score) {
+                if (workingList[j].score > workingList[largestIndex].score) {
                     largestIndex = j;
                 }
             // }
         }
 
-        sortedList.push(list2Sort[largestIndex]);
+        sortedList.push(workingList[largestIndex]);
         list2Sort.splice(largestIndex, 1);
-        scoresCoppy.splice(largestIndex, 1);
     }
 
     return sortedList;

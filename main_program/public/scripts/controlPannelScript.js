@@ -23,6 +23,8 @@ function submitChanges() {
     }
 }
 
+
+//root cause of error is here!!!
 function removeLowestScore() {
     document.getElementById('rune').play();
     socket.emit('removeHouse', {})
@@ -32,10 +34,12 @@ function getPointsData() {
     var houseData = [];
     for(var i = 0; i < houseElems.length; i++) {
         houseData.push(houseElems[i].value);
-        if(houseData[i].match(/^[0-9]+$/) == null) {
-            alert("you cant break me that easy meatbag! 🤖 \n(not all your values are positive integers)");
-            return false;
-        }
+        
+        //fix to validate
+        // if(houseData[i].match(/^[0-9]+$/) == null) {
+            // alert("you cant break me that easy meatbag! 🤖 \n(not all your values are positive integers)");
+            // return false;
+        // }
     }
 
     return houseData;

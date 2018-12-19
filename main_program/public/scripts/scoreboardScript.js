@@ -18,9 +18,17 @@ socket.on('resetScoreboard', function(data) {
     }
 });
 
+
+
+//UPDATE SCORES
+//this listner waits fro the update scores command
+//from a control pannel and then updates the scores
+//with the data that it has recieved from the 
+//scoreboard
 socket.on('updateScores', function(data) {
-    console.log(data);
+
     for(var i = 0; i < houseElems.length; i++) {
+        //this is where the problem is
         houseElems[i].innerHTML = data.newScores[i];
         scores[i] = parseInt(data.newScores[i]);
     }
@@ -34,10 +42,16 @@ socket.on('updateScores', function(data) {
     }
 });
 
+
+
+//REMOVE HOUSES
+//this listner waits for the command from a control pannel to 
+//remove houses and removes the houses that have the lowest 
+//scores
 socket.on('removeHouses', function(data) {
+
     for(var i = 0; i < data.houses.length; i++) {
         document.getElementById(data.houses[i].toLowerCase() + 'Div').style.display = "none";
-        // document.getElementById(data.houses[i].toLowerCase() + 'Div').style.marginTop = "5000px"; //eww
         hidden.push(houses[i]);
     }
 

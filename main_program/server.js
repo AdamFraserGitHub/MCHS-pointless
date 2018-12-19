@@ -58,31 +58,30 @@ controlPannelSpace.on('connection', function(socket) {
     socket.on('removeHouse', function(data) {
         //remove house from scoreboard
 
-        var smallestScore = scores[0]
-        var smallestHouses = [houses[0]];
+        var smallestScore;
+        var smallestHouses = [];
 
         for(var i = 0; i < houses.length; i++) {
-            if(scores[i] < smallestScore) {
-                smallestScore = scores[i];
-                smallestHouses = [houses[i]]
-            } else if(scores[i] == smallestScore) {
-                smallestHouses.push(houses[i]);
+            if(!linSearch(hidden, houses[i])) {
+                smallestScore = scores[i]
+                smallestHouses = [houses[i]];
+                break;
             }
         }
 
-        for(var i = 0; i < smallestHouses.length; i++) {
-            for(var j = 0; j < houses.length; j++) {
-                if(houses[j] == smallestHouses[i]) { 
-                    hidden.push(houses[j]);
-                    // houses.splice(j, 1); 
+        for(var i = 0; i < houses.length; i++) {
+            if(!linSearch(hidden, houses[i])) {
+                if(scores[i] < smallestScore) {
+                    smallestScore = scores[i];
+                    smallestHouses = [houses[i]];
+                } else if(scores[i] == smallestScore && !linSearch(smallestHouses, houses[i])) {
+                    smallestHouses.push(houses[i]);
                 }
             }
         }
 
         for(var i = 0; i < smallestHouses.length; i++) {
-            for(var j = 0; j < scores.length; j++) {
-                // if(scores[j] == smallestScore) { scores.splice(j, 1); }
-            }
+            hidden.push(smallestHouses[i]);
         }
 
         if(smallestHouses.length == 1) {
@@ -111,7 +110,7 @@ controlPannelSpace.on('connection', function(socket) {
 scoreBoardSpace.on('connection', function(socket) {
     console.log("\nscoreboard connected (づ｡◕‿‿◕｡)づ");
     scoreBoardSpace.emit('updateScores', {newScores: scores});
-    scoreBoardSpace.emit('removeHouses', {houses: hidden});
+    // scoreBoardSpace.emit('removeHouses', {houses: hidden});
     scoreBoards ++;
 
     socket.on('disconnect', function() {
@@ -123,7 +122,17 @@ scoreBoardSpace.on('connection', function(socket) {
             scoreBoards = 0;
         }
     });
-})
+});
+
+function linSearch(array2Search, key2Search4) {
+    for(var i = 0; i < array2Search.length; i++) {
+        if(array2Search[i].toLowerCase() == key2Search4.toLowerCase()) {
+            return true;
+        }
+    }
+
+    return false;
+}
 
 const routes = require('./routes.js')
 app.use('/', routes);

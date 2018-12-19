@@ -34,15 +34,20 @@ socket.on('updateScores', function(data) {
     }
 
     //stuff for sorting and moving about teams
-    var teamOrder = sortHouses(houses);
+    var teamOrder = sortHouses();
+    console.log("\nus")
     console.log(teamOrder);
 
     var count = 0;
     for(var i = 0; i < teamOrder.length; i++) {
         //find div, set its top margin
         if(!linSearch(hidden, teamOrder[i].name)){
+            console.log("\n\n");
+            console.log(teamOrder[i].name);
+            console.log("\n\n")
             console.log("ok")
-            document.getElementById(teamOrder[i].name.toLowerCase() + 'Div').style.marginTop = (count * 16.6667).toString() + 'vh';
+            document.getElementById(teamOrder[i].name.toLowerCase() + 'Div').style.marginTop = ((count * 16.6667) + (100/12) * hidden.length).toString() + 'vh';
+            count++;
         }
     }
 });
@@ -57,14 +62,21 @@ socket.on('removeHouses', function(data) {
 
     for(var i = 0; i < data.houses.length; i++) {
         document.getElementById(data.houses[i].toLowerCase() + 'Div').style.display = "none";
-        hidden.push(houses[i]);
+        hidden.push(data.houses[i]);
+
     }
 
-    var teamOrder = sortHouses(houses);
+    var teamOrder = sortHouses();
+    console.log("\nrh")
+    console.log(teamOrder)
 
+    var count = 0;
     for(var i = 0; i < teamOrder.length; i++) {
         //find div, set its top margin
-        document.getElementById(teamOrder[i].toLowerCase() + 'Div').style.marginTop = ((i * 16.6667) + (100/24) * hidden.length).toString() + 'vh';
+        if(!linSearch(hidden, teamOrder[i].name)) {
+            document.getElementById(teamOrder[i].name.toLowerCase() + 'Div').style.marginTop = ((count * 16.6667) + (100/12) * hidden.length).toString() + 'vh';
+            count++;
+        }
     }
 });
 
@@ -80,14 +92,14 @@ socket.on('clearScoreboard', function(data) {
 }); 
 
 
-function sortHouses(list2Sort) {
+function sortHouses() {
     //this funciton will need to sort scores and houses simultaniously
     var sortedList = [];
-    var lenList = list2Sort.length;
+    var lenList = houses.length;
     var workingList = []
 
     for(var i = 0; i < lenList; i++) {
-        workingList.push({name: list2Sort[i], score: scores[i]});
+        workingList.push({name: houses[i], score: scores[i]});
     }
 
     for(var i = 0; i < lenList; i++) {
@@ -103,15 +115,15 @@ function sortHouses(list2Sort) {
         }
 
         sortedList.push(workingList[largestIndex]);
-        list2Sort.splice(largestIndex, 1);
+        workingList.splice(largestIndex, 1);
     }
 
     return sortedList;
 }
 
-function linSearch(array, key) {
-    for(var i = 0; i < array.length; i++) {
-        if(array == key) {
+function linSearch(array2Search, key2Search4) {
+    for(var i = 0; i < array2Search.length; i++) {
+        if(array2Search[i].toLowerCase() == key2Search4.toLowerCase()) {
             return true;
         }
     }

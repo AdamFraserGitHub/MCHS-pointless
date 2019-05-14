@@ -1,4 +1,4 @@
-this program really wasn't made with being easy to opperate in mind.
+this program was bashed together so really wasn't made with being easy to opperate in mind (sorry for that 😂).
 to install it you'll need to install the "node.js" runtime enviroment
 for the server. from there you'll need to run a command something like
 "node server.js" (no quotation marks) to run the server in the
@@ -7,7 +7,7 @@ of the server (something like C:\\users\documents\pointless\main_program\server.
 from there you can probably follow the instructions that will pop up in
 the console window. if you need a hand setting up the program feel free to 
 try contacting me using the information in the "a-note-to-anyone-maintaining-this-program.txt"
-file, or you could try asking one of the computer science teachers
+file, or you could try making a sacrafice to the almighty Cthulhu (it works for me)
 
 https://nodejs.org/en/download/
 
@@ -17,3 +17,8 @@ the other (no particular order)
 npm install ip
 npm install express
 npm install socket.io
+
+alternativly if you're on linux you can just run the setup.sh script to install the server and then
+runServer.sh to run the server
+to do this you will need to go to a command window in the directory containing setup.sh and type "sudo ./setup.sh"
+if that doesn't work you will need to type "sudo chmod +x ./setup.sh". and then do the same for "runServer.sh"

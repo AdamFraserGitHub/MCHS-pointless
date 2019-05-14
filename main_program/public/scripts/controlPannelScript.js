@@ -35,11 +35,11 @@ function getPointsData() {
     for(var i = 0; i < houseElems.length; i++) {
         houseData.push(houseElems[i].value);
         
-        //fix to validate
-        // if(houseData[i].match(/^[0-9]+$/) == null) {
-            // alert("you cant break me that easy meatbag! 🤖 \n(not all your values are positive integers)");
-            // return false;
-        // }
+        //checks that the values entered are numbers
+        if(String(Number(houseData[i])) != houseData[i]) {
+            alert("you cant break me that easy meatbag! 🤖 \n(not all your values are numbers)");
+            return false;
+        }
     }
 
     return houseData;
@@ -50,6 +50,11 @@ function clearScoreBoard() {
     socket.emit('clearScoreboard', {});
 }
 
+function resetRemaining20() {
+    document.getElementById('rune').play();
+    socket.emit('reset20', {});
+}
+
 socket.on('noScoreboard', function(data) {
     alert("no scoreboard detected 😭")
 })
@@ -57,3 +62,4 @@ socket.on('noScoreboard', function(data) {
 document.getElementById('submitChangesBtn').addEventListener('click', function(clickEvent) { submitChanges(); });
 document.getElementById('removeLowestScoreBtn').addEventListener('click', function(clickEvent) { removeLowestScore(); });
 document.getElementById('clearScores').addEventListener('click', function(clickEvent) { clearScoreBoard(); })
+document.getElementById('reset20OnScr').addEventListener('click', function(clickEvent) { resetRemaining20(); })

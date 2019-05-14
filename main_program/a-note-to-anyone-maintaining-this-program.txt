@@ -12,8 +12,7 @@ adamfraserprograming@gmail.com
 gw09fraseradam2@gmail.com
 adamfraser.ucas@gmail.com
 
-snapchat
-xenong8e54
+to be able to edit this project you'll need a basic understanding of web languages, node.js, express.js, socket.io and a stress ball
 
-to be able to edit this project you'll need at least a basic understanding of javascript, HTML, CSS, node.js, express.js, socket.io and a stress ball
+i might add updates from time to time out of shame, if you want to update just pull the changes from github
 https://github.com/AdamFraserGitHub/MCHS-pointless

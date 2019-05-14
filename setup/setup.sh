@@ -1,5 +1,5 @@
-echo "cloning code from github repository"
-sudo git clone "https://github.com/AdamFraserGitHub/MCHS-pointless"
+echo "cloning code from adam's github"
+sudo git clone https://github.com/AdamFraserGitHub/MCHS-pointless
 
 echo "installing packages neccesary for MCHS-pointless"
 

@@ -31,6 +31,11 @@ controlPannelSpace.on('connection', function(socket) {
         console.log("controll pannel disconnected ༼ つ ಥ_ಥ ༽つ");
     })
 
+    socket.on('reset20', function() {
+        scores = [0,0,0,0,0,0];
+        scoreBoardSpace.emit('updateScores', {newScores: scores, sort: false});
+    });
+
     socket.on('updateScores', function(data) {
         //update scores on scoreboard
 
@@ -51,51 +56,51 @@ controlPannelSpace.on('connection', function(socket) {
 
             console.log(scores);
             
-            scoreBoardSpace.emit('updateScores', {newScores: scores});
+            scoreBoardSpace.emit('updateScores', {newScores: scores, sort: true});
         }
     });
 
     socket.on('removeHouse', function(data) {
         //remove house from scoreboard
 
-        var smallestScore;
-        var smallestHouses = [];
+        var largestScore;
+        var largestHouses = [];
 
         for(var i = 0; i < houses.length; i++) {
             if(!linSearch(hidden, houses[i])) {
-                smallestScore = scores[i]
-                smallestHouses = [houses[i]];
+                largestScore = scores[i]
+                largestHouses = [houses[i]];
                 break;
             }
         }
 
         for(var i = 0; i < houses.length; i++) {
             if(!linSearch(hidden, houses[i])) {
-                if(scores[i] < smallestScore) {
-                    smallestScore = scores[i];
-                    smallestHouses = [houses[i]];
-                } else if(scores[i] == smallestScore && !linSearch(smallestHouses, houses[i])) {
-                    smallestHouses.push(houses[i]);
+                if(scores[i] > largestScore) {
+                    largestScore = scores[i];
+                    largestHouses = [houses[i]];
+                } else if(scores[i] == largestScore && !linSearch(largestHouses, houses[i])) {
+                    largestHouses.push(houses[i]);
                 }
             }
         }
 
-        for(var i = 0; i < smallestHouses.length; i++) {
-            hidden.push(smallestHouses[i]);
+        for(var i = 0; i < largestHouses.length; i++) {
+            hidden.push(largestHouses[i]);
         }
 
-        if(smallestHouses.length == 1) {
-            console.log("\n" + smallestHouses[0] + " you are the weakest link.. wait wrong show");
+        if(largestHouses.length == 1) {
+            console.log("\n" + largestHouses[0] + " you are the weakest link.. wait wrong show");
         } else {
             var weakestHouses = "";
-            for(var i = 0; i < smallestHouses.length - 1; i++) {
-                weakestHouses += smallestHouses[i] + ',';
+            for(var i = 0; i < largestHouses.length - 1; i++) {
+                weakestHouses += largestHouses[i] + ',';
             }
-            weakestHouses += smallestHouses[smallestHouses.length - 1]; 
+            weakestHouses += largestHouses[largestHouses.length - 1]; 
 
             console.log("\n" + weakestHouses + " you are the weakest links.. wait wrong show");
         }
-        scoreBoardSpace.emit('removeHouses', {houses: smallestHouses});
+        scoreBoardSpace.emit('removeHouses', {houses: largestHouses});
 
     });
 
@@ -137,7 +142,7 @@ function linSearch(array2Search, key2Search4) {
 const routes = require('./routes.js')
 app.use('/', routes);
 
-server.listen(3000,'0.0.0.0', function(err) {
+server.listen(80,'0.0.0.0', function(err) {
     if(err) {
         console.log("you broke the server! GRRR!! (ノಠ益ಠ)ノ彡┻━┻ \n");
     } else {

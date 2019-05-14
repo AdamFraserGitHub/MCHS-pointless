@@ -34,20 +34,20 @@ socket.on('updateScores', function(data) {
     }
 
     //stuff for sorting and moving about teams
-    var teamOrder = sortHouses();
-    console.log("\nus")
-    console.log(teamOrder);
+    if(data.sort) {
+        var teamOrder = sortHouses();
 
-    var count = 0;
-    for(var i = 0; i < teamOrder.length; i++) {
-        //find div, set its top margin
-        if(!linSearch(hidden, teamOrder[i].name)){
-            console.log("\n\n");
-            console.log(teamOrder[i].name);
-            console.log("\n\n")
-            console.log("ok")
-            document.getElementById(teamOrder[i].name.toLowerCase() + 'Div').style.marginTop = ((count * 16.6667) + (100/12) * hidden.length).toString() + 'vh';
-            count++;
+        var count = 0;
+        for(var i = 0; i < teamOrder.length; i++) {
+            //find div, set its top margin
+            if(!linSearch(hidden, teamOrder[i].name)){
+                console.log("\n\n");
+                console.log(teamOrder[i].name);
+                console.log("\n\n")
+                console.log("ok")
+                document.getElementById(teamOrder[i].name.toLowerCase() + 'Div').style.marginTop = ((count * 16.6667) + (100/12) * hidden.length).toString() + 'vh';
+                count++;
+            }
         }
     }
 });
@@ -104,18 +104,18 @@ function sortHouses() {
 
     for(var i = 0; i < lenList; i++) {
         //find largest and put in sorted list
-        var largestIndex = 0;
+        var smallestIndex = 0;
 
         for(var j = 0; j < workingList.length; j++) {
             // if(!(list2Sort[j] in hidden)) {
-                if (workingList[j].score > workingList[largestIndex].score) {
-                    largestIndex = j;
+                if (workingList[j].score < workingList[smallestIndex].score) {
+                    smallestIndex = j;
                 }
             // }
         }
 
-        sortedList.push(workingList[largestIndex]);
-        workingList.splice(largestIndex, 1);
+        sortedList.push(workingList[smallestIndex]);
+        workingList.splice(smallestIndex, 1);
     }
 
     return sortedList;
